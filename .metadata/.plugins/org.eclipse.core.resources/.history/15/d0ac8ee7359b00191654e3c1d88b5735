@@ -1,0 +1,52 @@
+class Node {
+	String data;
+	Node next;
+
+	public Node(String data) {
+		this.data = data;
+		this.next = null;
+	}
+
+	public String toString() {
+		return data;
+	}
+}
+
+public class LinkedList {
+	Node head;
+	int size;
+
+	public LinkedList() {
+		head = null;
+		size = 0;
+	}
+
+	public void add(String data) {
+		if (head == null) {
+			head = new Node(data);
+		} else {
+			Node n = head;
+			while (n.next != null) {
+				n = n.next;
+			}
+			n.next = new Node(data);
+		}
+		size++;
+	}
+
+	public String toString() {
+		String ans = "[";
+		if (head == null)
+			ans = "[]";
+		else {
+			Node n = head;
+			while (n.next != null) {
+				ans = ans + n.data + ", ";
+				n = n.next;
+			}
+			ans = ans + n.data + "]";
+		}
+		return ans;
+	}
+
+}

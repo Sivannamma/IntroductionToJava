@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="&#x0D;&#x0A;public class Ex1 {&#x0D;&#x0A;&#x0D;&#x0A;&#x09;public static void main(String[] args)&#x0D;&#x0A;&#x09;{&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;final double INCH_2_CENT = 2.54; // making final number to use it as conversion  &#x0D;&#x0A;int UserNum1 = MyConsole.readInt(&quot;Enter an Inch length: &quot;); // getting natural number from the user&#x0D;&#x0A;double ConvertNum =UserNum1 * INCH_2_CENT ; // in order to print in double , making a new variable &#x0D;&#x0A;System.out.println(ConvertNum + &quot;cm = &quot; + UserNum1 + &quot;&apos;&apos;&quot;);&#x0D;&#x0A;&#x0D;&#x0A;double UserNum2 = MyConsole.readInt(&quot;Enter an Inch length: &quot;); // getting real number from the user&#x0D;&#x0A;&#x09;}&#x0D;&#x0A;&#x0D;&#x0A;}&#x0D;&#x0A;"/>
+			<item value=""/>
+		</list>
+		<list key="replacehistory">
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="284" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="391" key="DIALOG_HEIGHT"/>
+		<item value="549" key="DIALOG_X_ORIGIN"/>
+		<item value="112" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

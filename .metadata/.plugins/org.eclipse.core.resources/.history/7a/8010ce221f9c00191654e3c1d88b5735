@@ -1,0 +1,48 @@
+
+public class Point {
+	int x;
+	int y;
+
+	public Point(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public Point(Point other) {
+		this(other.x, other.y);
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public String toString() {
+		String str = "( " + x + ", " + y + " )";
+		return str;
+	}
+
+	public static int opposite(Point[] pArr) {
+		int count = 0;
+
+		for (int i = 0; i < pArr.length; i++) {
+			for (int j = i + 1; j < pArr.length; j++) {
+				if ((pArr[i].getX() == -pArr[j].getX() || -pArr[i].getX() == pArr[j].getX())
+						&& (pArr[i].getY() == -pArr[j].getY() || -pArr[i].getY() == pArr[j].getY()))
+					count++;
+			}
+		}
+		return count;
+	}
+}

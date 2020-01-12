@@ -1,0 +1,28 @@
+
+public class mainHugeNum {
+
+	public static void main(String[] args) {
+
+		long f = Long.MIN_VALUE;
+		long g = Long.MAX_VALUE;
+		HugeNumber num2 = new HugeNumber(f);
+		HugeNumber num = new HugeNumber(g);
+		num.add(num2);
+		System.out.println(num);
+
+		System.out.println(HugeNumber.isBigger(num, num2));
+
+		LinkedList link = new LinkedList();
+		link.add("7");
+		link.add("10");
+		link.add("20");
+		link.add("5");
+		link.add("11");
+		link.add("19");
+
+		System.out.println(link);
+		LinkedList.kDivOrder(link, 4);
+		System.out.println(link);
+	}
+
+}

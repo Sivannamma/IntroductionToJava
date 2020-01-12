@@ -1,0 +1,583 @@
+
+public class Exams {
+
+	public static int sum(int[][] arr, int i, int j) {
+
+		if (i == arr.length - 1 || j == arr[i].length - 1)
+			return arr[i][j];
+		return sum(arr, ++i, ++j) + arr[i][j];
+
+	}
+
+	public static void printT(int n) {
+		if (n == 0)
+			return;
+
+		printT(--n);
+		for (int i = 0; i < n; i++) {
+			System.out.print("*");
+		}
+		System.out.println();
+	}
+
+	public static void chatQ(int a) {
+
+		int a3 = a * a * a;
+		int aHelp = a3;
+		int count = 0;
+		int sum = 0;
+
+		while (aHelp != 0) {
+			count++;
+			aHelp = aHelp / 10;
+		}
+		int[] arr = new int[count];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = a3 % 10;
+			a3 = a3 / 10;
+		}
+		for (int i = 0; i < arr.length; i++) {
+			sum = sum + arr[i];
+		}
+		if (sum == a) {
+			System.out.print(a + "=");
+			for (int i = 0; i < arr.length; i++) {
+				if (i + 1 == arr.length)
+					System.out.print(arr[i]);
+				else
+					System.out.print(+arr[i] + "+");
+			}
+		}
+	}
+
+	public static char appearance(String str, int n) {
+		char temp = '?';
+		int count = 0;
+		for (int i = 0; i < str.length(); i++) {
+			for (int j = 0; j < str.length(); j++) {
+				if (str.charAt(i) == str.charAt(j))
+					count++;
+			}
+			if (count == n)
+				temp = str.charAt(i);
+			count = 0;
+		}
+		return temp;
+	}
+
+	public static int opposite(Point[] pArr) {
+		int count = 0;
+
+		for (int i = 0; i < pArr.length; i++) {
+			for (int j = i + 1; j < pArr.length; j++) {
+				if ((pArr[i].getX() == -pArr[j].getX() || -pArr[i].getX() == pArr[j].getX())
+						&& (pArr[i].getY() == -pArr[j].getY() || -pArr[i].getY() == pArr[j].getY()))
+					count++;
+			}
+		}
+		return count;
+	}
+
+	public static double smallestDistance(double[] arr) {
+		if (arr.length == 1)
+			return arr[0];
+
+		double min = Math.abs(arr[0] - arr[1]);
+
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = i + 1; j < arr.length; j++) {
+				if (min > Math.abs(arr[i] - arr[j]))
+					min = Math.abs(arr[i] - arr[j]);
+			}
+		}
+		return min;
+	}
+
+	public static void transpose(int[][] mat) {
+		int[][] arrHelp = new int[mat.length][mat[0].length];
+
+		for (int i = 0; i < arrHelp.length; i++) {
+			for (int k = 0; k < arrHelp.length; k++) {
+				arrHelp[i][k] = mat[k][i];
+			}
+		}
+
+		for (int i = 0; i < arrHelp.length; i++) {
+			for (int j = 0; j < arrHelp[i].length; j++) {
+				mat[i][j] = arrHelp[i][j];
+			}
+		}
+	}
+
+	public static String ifAppears(String str) {
+		if (str == "")
+			return "?";
+		if (str.length() == 1)
+			return str;
+
+		int count = 0;
+
+		for (int i = 0; i < str.length(); i++) {
+			for (int j = 0; j < str.length(); j++) {
+				if (str.charAt(i) == str.charAt(j))
+					count++;
+			}
+			if (count == 1)
+				return str.charAt(i) + "";
+
+			count = 0;
+		}
+		return "?";
+
+	}
+
+	public static boolean equals(int[] ar1, int[] ar2) {
+		int temp = 0;
+
+		if (ar1.length != ar2.length)
+			return false;
+
+		for (int i = ar1.length - 1; i >= 0; i--) { // bubble sort to both arrays
+			for (int j = 0; j < i; j++) {
+				if (ar1[j] > ar1[j + 1]) {
+					temp = ar1[j];
+					ar1[j] = ar1[j + 1];
+					ar1[j + 1] = temp;
+				}
+
+				if (ar2[j] > ar2[j + 1]) {
+					temp = ar2[j];
+					ar2[j] = ar2[j + 1];
+					ar2[j + 1] = temp;
+				}
+			}
+		}
+		for (int j = 0; j < ar2.length; j++) {
+			if (ar1[j] != ar2[j])
+				return false;
+		}
+		return true;
+
+	}
+
+	public static String longestWord(String str) {
+		if (str == "")
+			return str;
+		String[] arr = str.split(" ");
+		int[] arrSum = new int[arr.length];
+
+		for (int i = 0; i < arr.length; i++) {
+			arrSum[i] = arr[i].length();
+		}
+
+		int max = arrSum[0]; // initializing to something
+		int index = 0;
+
+		for (int i = 0; i < arrSum.length; i++) {
+			if (max < arrSum[i]) {
+				index = i;
+				max = arrSum[i];
+			}
+		}
+
+		return arr[index];
+	}
+
+	public static int[] recursiaSwap(int[] arr, int index) {
+		int temp;
+		if (index == 0)
+			return arr;
+		else {
+			for (int j = 0; j < index; j++) {
+				if (arr[j] > arr[j + 1]) {
+					temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+				}
+			}
+			return recursiaSwap(arr, --index);
+		}
+	}
+
+	public static int findingC(String str, char c, int i) {
+		if (str == "")
+			return 0;
+		if (i == str.length())
+			return 0;
+		if (str.charAt(i) == c)
+			return findingC(str, c, ++i) + 1;
+		else
+			return findingC(str, c, ++i);
+	}
+
+	public static boolean MarsennePrime(int n) {
+		int saveN = n + 1;
+		while (saveN != 1) { // checking if the number is multiplying by 2
+			if (saveN % 2 == 0)
+				saveN = saveN / 2;
+			else
+				return false;
+		}
+		for (int j = 2; j < n; j++) {
+			if (n % j == 0)
+				return false;
+		}
+		return true;
+	}
+
+	public static String moveMost(String str) {
+		int max = 0;
+		int count = 0;
+		char charMax = str.charAt(0); // Initializing to some variable
+		String strNew = "";
+
+		for (int i = 0; i < str.length(); i++) { // for to go over the letters
+			for (int j = 0; j < str.length(); j++) { // for each letter checking how much it appears
+				if (str.charAt(i) == str.charAt(j))
+					count++;
+			}
+			if (max < count) { // if the max is lower, updating to the most frequent one
+				max = count;
+				charMax = str.charAt(i);
+			}
+			count = 0;
+		}
+
+		for (int i = 0; i < str.length(); i++) { // for to set the new string
+			if (str.charAt(i) != charMax)
+				strNew = strNew + str.charAt(i);
+		}
+
+		for (int j = 0; j < max; j++) { // setting the frequent one at the end
+			strNew = strNew + charMax;
+		}
+		return strNew;
+	}
+
+	public static boolean square(int a) {
+		int count = 0;
+		int sum = 0;
+		for (int i = 1; i <= a; i++) {
+			if (a % i == 0)
+				count++;
+		}
+		int[] arr = new int[count];
+		int j = 0;
+		for (int i = 1; i <= a; i++) {
+			if (a % i == 0) {
+				arr[j] = i * i;
+				sum += arr[j];
+				j++;
+			}
+		}
+		int sqr = (int) Math.sqrt(sum);
+		if (sqr * sqr == sum)
+			return true;
+
+		return false;
+	}
+
+	public static String reduce(String s) {
+		if (s == "")
+			return s;
+		String str = "" + s.charAt(0);
+		int j = 0;
+		for (int i = 1; i < s.length(); i++) {
+			if (s.charAt(i) != s.charAt(j)) {
+				j = i;
+				str = str + s.charAt(i);
+			}
+		}
+		return str;
+	}
+
+	public static boolean symmetrical(int[][] a, int[][] b) {
+		int sizeB = 0, sizeA = 0;
+		boolean flag = true;
+		for (int i = 0; i < b.length; i++) { // matrix B
+			for (int j = 0; j < b[i].length; j++)
+				sizeB++;
+		}
+
+		for (int i = 0; i < a.length; i++) { // matrix A
+			for (int j = 0; j < a[i].length; j++)
+				sizeA++;
+		}
+
+		if (sizeB != sizeA)
+			flag = false;
+
+		int[] arrB = new int[sizeB]; // new matrix help for B
+		int[] arrA = new int[sizeA]; // new matrix help for A
+
+		int index = 0;
+		// adding to matrix B
+		for (int i = b.length - 1; i >= 0; i--) {
+			for (int j = 0; j < b[i].length; j++) {
+				arrB[index] = b[i][j];
+				index++;
+			}
+		}
+
+		index = 0;
+
+		// adding to matrix A
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < a[i].length; j++) {
+				arrA[index] = a[i][j];
+				index++;
+			}
+		}
+		index = 0;
+
+		// checking if its symmetrical
+		for (int i = 0; i < arrA.length; i++) {
+			if (arrB[i] != arrA[i])
+				flag = false;
+		}
+		if (flag)
+			return true;
+
+		flag = true;
+		int[] arrBother = new int[sizeB];
+
+		for (int i = 0; i < b.length; i++) {
+			for (int j = b[i].length - 1; j >= 0; j--) {
+				arrBother[index] = b[i][j];
+				index++;
+			}
+		}
+
+		// checking if its symmetrical
+		for (int i = 0; i < arrA.length; i++) {
+			if (arrBother[i] != arrA[i])
+				flag = false;
+		}
+
+		return flag;
+	}
+
+	public static void main(String[] args) {
+//		System.out.println(MarsennePrime(127)); // first function
+//		System.out.println(moveMost("abbacbca")); // second function
+//
+//		// forth question
+//		Dice one = new Dice(6);
+//		System.out.println("the array of sides is- " + one);
+//		System.out.println(one.numOfSides);
+//		System.out.println("the random side u got is- " + Dice.intThrow(one));
+//
+//		// fifth question
+//		LinkedList linky = new LinkedList();
+//		linky.add("9");
+//		linky.add("10");
+//		linky.add("6");
+//		linky.add("3");
+//		linky.add("2");
+//		linky.add("15");
+//		linky.add("1");
+//		System.out.println(linky);
+//		linky.sort();
+//		System.out.println(linky);
+//
+//		// six question
+//		System.out.println(square(246));
+//
+//		// seven question
+//		System.out.println(reduce("aaabcaade"));
+//
+//		// 8 question
+//		int[][] mat = { { 1, 2, 3, 4 }, { 5, 6, 7 }, { 8, 9, 10, 11, 12 }, { 13, 14, 15, 16 }, { 17, 18, 19 } };
+//
+//		int[][] mat2 = { { 17, 18, 19 }, { 13, 14, 15, 16 }, { 8, 9, 10, 11, 12 }, { 5, 6, 7 }, { 1, 2, 3, 4 } };
+//
+//		int[][] mat3 = { { 4, 3, 2, 1 }, { 7, 6, 5 }, { 12, 11, 10, 9, 8 }, { 16, 15, 14, 13 }, { 19, 18, 17 } };
+//
+//		System.out.println(symmetrical(mat, mat3));
+//		System.out.println(symmetrical(mat, mat2));
+//
+//		// 9 question
+//		Line liney = new Line(4, 2, 4, 2);
+//		System.out.println(liney.length());
+//		System.out.println(liney.on(4, 3));
+//
+//		// question 10
+//		LinkedList linky2 = new LinkedList();
+//
+//		linky2.add("a");
+//		linky2.add("b");
+//		linky2.add("c");
+//		linky2.add("d");
+//		linky2.add("e");
+//		linky2.add("f");
+//
+//		System.out.println(linky2);
+//		linky2.swap(1, 5);
+//		System.out.println(linky2);
+//
+//		// question 11
+//		int a = linky2.LinkedSize(linky2, linky2.head);
+//		System.out.println(a);
+//		
+//		// question 12- from recursia site
+//		String str="abcccfcfcasc";
+//		System.out.println(findingC(str,'c',0));
+
+		// question 13- from recursia site
+//		int [] arr = { 9,7,4,7,1,5,3};
+//		
+//		for(int i=0; i<arr.length; i++)
+//			System.out.print(arr[i]+" ");
+//		
+//		int [] arrSwap= recursiaSwap(arr, arr.length-1);
+//		
+//		System.out.println();
+//		
+//		for(int i=0; i<arrSwap.length; i++)
+//			System.out.print(arrSwap[i]+" ");
+
+		// question 14- if a linked list is symmetrical
+
+//		LinkedList linky3 = new LinkedList();
+//		
+//		linky3.add("1");
+//		linky3.add("2");
+//		linky3.add("3");
+//		linky3.add("3");
+//		linky3.add("2");
+//		linky3.add("1");
+//
+//		
+//		System.out.println(linky3.ifSymmetrical());
+
+		// question 15- from an exam - prints the longest word.
+//		String str="java and homework ";
+//		String strLongest=longestWord(str);
+//		System.out.println(strLongest);
+
+		// question 16- parabula class
+//		Parabula one= new Parabula(5,2,1);
+//		double y=one.function(4);
+//		System.out.println(y);
+//		System.out.println(one.isAbove(0.1, 5.0));
+//		System.out.println(one);
+//		System.out.println(one.getterA());
+//		System.out.println(one.getterB());
+//		System.out.println(one.getterC());
+
+		// question 17- is same
+//		int [] ar1= {1,2,3,3};
+//		int [] ar2= {1,2,6,3};
+//		
+//		int [] arr1= {3,2,1,3};
+//		int [] arr2= {1,3,3,2};
+//		
+//		int[] arrr1= {1,2,3,2};
+//		int [] arrr2= {1,2,3};
+//		
+//		System.out.println(equals(ar1,ar2));
+//		System.out.println(equals(arr1,arr2));
+//		System.out.println(equals(arrr1,arrr2));
+
+		// question 18
+//		String str1= "abcabcdef";
+//		String str2="abcab";
+//		String str3="aabbacacs";
+//		
+//		System.out.println(ifAppears(str1)); //d
+//		System.out.println(ifAppears(str2)); //c
+//		System.out.println(ifAppears(str3)); //s
+
+		// question 19 - transposing the matrix
+
+//		int[][] arr = { { 1, 2, 4, 5 }, { 6, 7, 8, 9 }, { 10, 11, 12, 13 }, { 14, 15, 16, 17 } };
+//
+//		transpose(arr);
+//		
+//		for (int i = 0; i < arr.length; i++) {
+//			for (int j = 0; j < arr[i].length; j++) {
+//				System.out.print(arr[i][j] + " ");
+//			}
+//			System.out.println();
+//		}
+
+		// 20- question- balloon class
+
+//		Balloon b=new Balloon(4,4,6);
+//		System.out.println(b);
+//		double v= b.volume();
+//		System.out.println(v);
+//		
+//		System.out.println("the radius is: "+b.getRadius());
+//		
+//		System.out.println(b.isIn(2, 1));
+//
+//		// question 21- ballonContainer
+//		BalloonContainer b = new BalloonContainer();
+//		Balloon x1 = new Balloon(2, 3, 1);
+//		Balloon x2 = new Balloon(5, 7, 9);
+//		Balloon x3 = new Balloon(4, 6, 1);
+//		Balloon x4 = new Balloon(10, 5, 2);
+//		b.add(x1);
+//		b.add(x2);
+//		b.add(x3);
+//		b.add(x4);
+//
+//		System.out.println(b);
+//
+//		b.removeSmallest();
+//
+//		System.out.println(b);
+//
+//		Balloon x5 = new Balloon(7, 9, 2);
+//		b.add(x5);
+//
+//		System.out.println(b);
+
+		// question 22- distance between arr
+//
+//		double[] arr = { 1.1, 2.5, 63.9, 1.12, 3.45, -4.4 };
+//		System.out.println(smallestDistance(arr));
+
+		// question 23- exam
+//		Point[] arr = new Point[4];
+//
+//		Point p1 = new Point(-3, 4);
+//		Point p2 = new Point(3, -4);
+//		Point p3 = new Point(3, -4);
+//		Point p4 = new Point(-3, 4);
+//
+//		arr[0] = p1;
+//		arr[1] = p2;
+//		arr[2] = p3;
+//		arr[3] = p4;
+//		int a = opposite(arr);
+//		System.out.println(a);
+
+		// question 24- triangle
+//		Triangle one= new Triangle (3,4);
+//		Triangle two= new Triangle (4,3);
+//		
+//	System.out.println(one.s());
+//	
+//	System.out.println(Triangle.isEquals(one, two));
+
+		// question 25
+//		String str="abcabcabcc";
+//		int n=4;
+//		System.out.println(appearance(str,n));
+
+		// question 26-
+//		int a=26;
+//		chatQ(a);
+
+		// question 27-
+//		printT(7);
+
+		// question 28-
+		int[][] arr = { { 1, 2, 4, 5 }, { 6, 7, 8, 9 }, { 10, 11, 12, 13 }, { 14, 15, 16, 17 } };
+		System.out.println(sum(arr, 0, 0));
+
+	}
+
+}

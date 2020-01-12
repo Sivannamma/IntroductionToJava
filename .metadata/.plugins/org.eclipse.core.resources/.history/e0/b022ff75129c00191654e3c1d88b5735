@@ -1,0 +1,64 @@
+
+public class BalloonContainer {
+	Balloon[] b;
+	int size = 0;
+
+	public BalloonContainer() {
+		b = new Balloon[3];
+	}
+
+	public BalloonContainer(BalloonContainer other) {
+		for (int i = 0; i < this.b.length; i++) {
+			other.b[i] = this.b[i];
+		}
+		other.size = this.size;
+	}
+
+	public void add(Balloon x) {
+		if (size == b.length)
+			resize();
+
+		this.b[size] = x;
+		size++;
+	}
+
+	public void resize() {
+		Balloon[] bHelp = new Balloon[size * (3 / 2)];
+		for (int i = 0; i < bHelp.length; i++) {
+			bHelp[i] = this.b[i];
+		}
+		b = bHelp;
+	}
+
+	public void removeSmallest() {
+		Balloon temp;
+		int count = 0;
+		for (int i = 0, k = b.length - 1; i < b.length; i++, k--) {
+			if (b[i].getRadius() <= 1) {
+				temp = b[i];
+				b[i] = b[k];
+				b[k] = temp;
+				count++;
+			}
+
+			Balloon[] bHelp = new Balloon[size - count];
+			for (int j = 0; j < bHelp.length; j++) {
+				bHelp[j] = this.b[j];
+			}
+			size = size - count;
+			b = bHelp;
+		}
+	}
+
+	public int size() {
+		return this.size;
+	}
+
+	public String toString() {
+		String str = "";
+		for (int i = 0; i < b.length; i++) {
+			str = str + b[i] + "---->";
+		}
+		return str;
+	}
+}

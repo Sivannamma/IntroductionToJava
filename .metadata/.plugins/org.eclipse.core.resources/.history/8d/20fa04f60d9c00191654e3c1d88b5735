@@ -1,0 +1,25 @@
+
+public class BalloonContainer {
+Balloon [] b;
+int size=0;
+
+public BalloonContainer() {
+	b=new Balloon [3];
+}
+
+public BalloonContainer(BalloonContainer other) {
+	for (int i = 0; i < this.b.length; i++) {
+		other.b[i]=this.b[i];	
+	}
+	other.size=this.size;
+}
+public void add(Balloon x) {
+	if(size==b.length)
+		Balloon[] bHelp= new Balloon [size*(1/2)];
+	else
+		size++;
+		this.b[size]=x;
+		
+	
+}
+}

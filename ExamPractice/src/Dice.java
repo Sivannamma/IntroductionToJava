@@ -1,0 +1,34 @@
+
+public class Dice {
+	int numOfSides;
+	int[] arr;
+
+	public Dice(int numOfSides) { // Default constructor
+		this.numOfSides=numOfSides;
+		arr = new int[numOfSides];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = (int) (Math.random() * numOfSides);
+		}
+	}
+
+	public Dice(Dice other) { // copy constructor
+		this.numOfSides = other.numOfSides;
+		arr = new int[other.numOfSides];
+		for (int i = 0; i < arr.length; i++) {
+			this.arr[i] = other.arr[i];
+		}
+	}
+
+	public String toString() {
+		String str = "";
+		for (int i = 0; i < arr.length; i++) {
+			str = str + arr[i] + " ";
+		}
+		return str;
+	}
+
+	public static int intThrow(Dice cobe) {
+		int index= (int)(Math.random()*cobe.numOfSides);
+		return cobe.arr[index];
+	}
+}

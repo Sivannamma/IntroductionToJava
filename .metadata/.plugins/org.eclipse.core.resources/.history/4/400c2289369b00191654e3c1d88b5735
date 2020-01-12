@@ -1,0 +1,86 @@
+class Node {
+	String data;
+	Node next;
+
+	public Node(String data) {
+		this.data = data;
+		this.next = null;
+	}
+
+	public String toString() {
+		return data;
+	}
+}
+
+public class LinkedList {
+	Node head;
+	int size;
+
+	public LinkedList() {
+		head = null;
+		size = 0;
+	}
+
+	public void add(String data) {
+		if (head == null) {
+			head = new Node(data);
+		} else {
+			Node n = head;
+			while (n.next != null) {
+				n = n.next;
+			}
+			n.next = new Node(data);
+		}
+		size++;
+	}
+
+	public String toString() {
+		String ans = "[";
+		if (head == null)
+			ans = "[]";
+		else {
+			Node n = head;
+			while (n.next != null) {
+				ans = ans + n.data + ", ";
+				n = n.next;
+			}
+			ans = ans + n.data + "]";
+		}
+		return ans;
+	}
+
+	public void sort() {
+		Node tempH = this.head;
+		String temp = "";
+		int count = 0;
+
+		while (tempH != null) { // counting how long is my list
+			count++;
+			tempH= tempH.next;
+		}
+
+		String[] array = new String[count]; // creating an array, size of the count of the linked list
+		tempH = this.head; // returning the head to be the start
+
+		for (int i = 0; i < array.length; i++) { // setting the values of the linked list into the array
+			array[i] = tempH.data;
+			tempH = tempH.next;
+		}
+		for (int i = array.length - 1; i >= 0; i--) { // bubble sort to the array
+			for (int j = 0; j < i; j++) {
+				if (Integer.parseInt(array[i]) > Integer.parseInt(array[i + 1])) {
+					temp = array[i];
+					array[i] = array[i + 1];
+					array[i + 1] = temp;
+				}
+			}
+
+			for (int j = 0; j < array.length && tempH != null; j++) {
+				tempH.data = array[j];
+				tempH = tempH.next;
+			}
+		}
+
+	}
+
+}
